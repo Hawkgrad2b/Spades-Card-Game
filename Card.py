@@ -1,6 +1,6 @@
 # Class for cards
 class Card:
-    RANKS = ["2", "3", "4", "5" , "6",  "7" , "8" , "9",  "10",  "J",  "Q" , "K", "A"]
+    RANKS = ["9",  "10",  "J",  "Q" , "K", "A"]
     SUITS = ["Spades", "Hearts", "Diamonds", "Clubs"]
 
     def __init__(self, suit: str, rank: str):
@@ -25,7 +25,7 @@ class Card:
         
     # String representation for debugging
     def __str__(self):
-        return f"{self._rank}{self._suit}"
+        return f"{self._rank} {self._suit}"
     
     def __repr__(self):
         return self.__str__()
@@ -50,12 +50,15 @@ class Deck:
         random.shuffle(self._cards)
 
     def deal(self, num_cards: int):
-        if num_cards > len(self._cards):
-            raise ValueError(f"Cannot deal {num_cards} cards. Only {len(self._cards)} ramaining cards.")
+        if num_cards > len(self._cards) - 4:
+            raise ValueError(f"Cannot deal {num_cards} cards. Only {len(self._cards)} remaining cards.")
         return [self._cards.pop() for _ in range(num_cards)]
     
     def __len__(self):
         return len(self._cards)
+    
+    # def __kitty__(self):
+    #    return self._cards
     
 # Create a deck
 deck = Deck()

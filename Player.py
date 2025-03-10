@@ -31,6 +31,23 @@ class Player(ABC):
     def __str__(self):
         return f"Player {self.name} - Hand: {self.hand}"
     
+    def pick_it_up(self, upcard):
+        # check if player wants to order up the upcard
+        pass
+
+    def choose_trump(self, excluded_suits):
+        # choose the trump suit
+        pass
+    
+    def recieve_card(self, card):
+        # add a card to the players hand
+        self.hand.append(card)
+    
+    def discard_card(self):
+        # discard a card from the players hand
+        pass
+        
+    
 class HumanPlayer(Player):
     def play_card(self, valid_cards: list):
         # prompting the player to choose a card
